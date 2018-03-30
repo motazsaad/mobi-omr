@@ -1,0 +1,8 @@
+<StackPanel ux:Class="Components.TextBox" ItemSpacing="2" InputHint="Default" > 
+	<string ux:Property="Lable" />
+	<string ux:Property="Value" />
+	<string ux:Property="InputHint" />
+
+	<myText FontSize="14" Value="{ReadProperty Lable}" />
+	<Components.TextInput Value="{ReadProperty Value}" InputHint="{ReadProperty InputHint}"  />
+</StackPanel>

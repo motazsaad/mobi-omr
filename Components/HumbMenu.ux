@@ -1,0 +1,7 @@
+<Panel  ux:Class="Components.HumbMenu"  HitTestMode="LocalBoundsAndChildren" ClipToBounds="true">
+	<StackPanel  HitTestMode="LocalBoundsAndChildren" ItemSpacing="6"  Alignment="Center">
+		<Rectangle Width="25" Height="2" Fill="#fff"/>
+		<Rectangle Width="25" Height="2" Fill="#fff"/>
+		<Rectangle Width="25" Height="2" Fill="#fff"/>
+	</StackPanel>
+</Panel>

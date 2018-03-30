@@ -1,0 +1,49 @@
+<Page ux:Class="AddSession">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var sessionName = Observable(""); 
+		var grade = Observable(); 
+		function addSession() {
+			saveSession();
+			console.log("addSession: " + sessionName.value);
+			router.goBack();
+		}
+		function StartSession() {
+			saveSession();
+			console.log("StartSession: " + sessionName.value);
+		}
+		function saveSession() {
+			//save here
+		}
+		module.exports={
+			addSession,
+			sessionName,
+			grade,
+			StartSession
+		}
+	</JavaScript>
+	<DockPanel>
+		<Grid Dock="Top" Background="#252e3e" MinHeight="50" Columns="1*,5*,1.5*">
+			<Components.HumbMenu  />
+			<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Add Session" />
+			<Panel Clicked="{addSession}"  HitTestMode="LocalBoundsAndChildren">
+				<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Done" />
+			</Panel>
+ 		</Grid>
+		<ScrollView Dock="Fill">
+			<StackPanel Padding="15,15,15,0" ItemSpacing="15">
+				<Components.TextBox Lable="Session Name:" Value="{sessionName}" />
+				<Components.TextBox Lable="Exam Grade:" Value="{grade}" InputHint="Integer"/>
+			</StackPanel>
+		</ScrollView>
+		<Rectangle Clicked="{StartSession}" HitTestMode="LocalBoundsAndChildren" CornerRadius="50" Fill="#252e3e" Dock="Bottom" MinHeight="15" Padding="10" Width="90%" Margin="15,15,15,25">
+			<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Start Session" />
+			<Shadow Distance="8" Size="10" Angle="90" Color="#0004" />
+			<WhilePressed>
+				<Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+			</WhilePressed>
+		</Rectangle>
+ 	</DockPanel>
+	
+</Page>

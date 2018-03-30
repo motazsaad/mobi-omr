@@ -1,0 +1,3 @@
+<TextInput ux:Class="Components.TextInput" Padding="15,10"  >
+	<Rectangle Fill="#eee"  Layer="Background"/>
+</TextInput>

@@ -1,0 +1,10 @@
+<Panel ux:Class="Components.FloatButton" Layer="Overlay" ZOffset="15" Alignment="BottomRight" Margin="12" HitTestMode="LocalBoundsAndChildren">
+	<string ux:Property="Value" />
+	<Circle ux:Name="btn" Width="55" Height="55" Fill="#c02" > 
+		<Text Value="{ReadProperty Value}" Alignment="Center" TextAlignment="Center" TextColor="#fff" FontSize="25"/>
+		<Shadow Angle="90" Distance="8" Size="10" />
+	</Circle>
+		<WhileHovering>
+			<Change btn.Fill="#e02" />
+		</WhileHovering>
+</Panel>

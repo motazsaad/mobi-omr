@@ -1,0 +1,28 @@
+<Page ux:Class="Home">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function addSession() {
+			router.push("AddSession");
+		}
+		module.exports={
+			addSession
+		}
+	</JavaScript>
+	<DockPanel>
+		<Grid Dock="Top" Background="#252e3e" MinHeight="50" Columns="1*,5*,1*">
+			<Components.HumbMenu  />
+			<myText TextAlignment="Center" Alignment="Center" TextColor="#fff">Home</myText>
+			<!-- <myText TextAlignment="Center" Alignment="Center"></myText> -->
+			<Panel></Panel>
+		</Grid>
+		<ScrollView Dock="Fill">
+			<StackPanel Padding="0,0,0,0">
+				<Each Count="15">
+					<Components.ItemMenu />
+				</Each>
+			</StackPanel>
+		</ScrollView>
+		<Components.FloatButton Value="+" Clicked="{addSession}" />
+	</DockPanel>
+
+</Page>

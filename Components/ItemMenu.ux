@@ -1,0 +1,10 @@
+<StackPanel ux:Class="Components.ItemMenu" HitTestMode="LocalBoundsAndChildren"  ItemSpacing="10" Padding="10,5">
+	<Grid Columns="8*,1*" Padding="0,5">
+		<myText>Session Name</myText>
+		<Text Alignment="Center">></Text>
+	</Grid>
+	<Rectangle Height="1" Fill="#ccc" Width="95%" Alignment="Bottom" Margin="0,0,0,-5" />
+	<WhilePressed>
+		<Change this.Background="#eee" />
+	</WhilePressed>
+</StackPanel>

@@ -1,0 +1,33 @@
+<App>
+    <WhileActive>
+		<iOS.StatusBarConfig Style="Light" Animation="Slide" IsVisible="True" />
+		<Android.StatusBarConfig Color="#000000" IsVisible="True" />
+    </WhileActive>
+   	
+
+<!--     <Font File="assets/Fonts/TheSans-Plain.otf" ux:Global="MyDefaultFont" />
+    <Font File="assets/Fonts/TheSans-Bold.otf" ux:Global="bold" /> -->
+	<Text  ux:Class="myText">
+		 <Scaling RelativeTo="SizeFactor"  RelativeNode="this"/>
+	</Text>
+	
+    <Router ux:Name="router" />
+
+    <DockPanel>
+    	<Panel Dock="Top">
+	        <StatusBarBackground/>
+	        <TopFrameBackground/>
+    	</Panel>
+
+        <Navigator Dock="Fill" DefaultPath="Splash">
+            <Splash ux:Template="Splash" router="router" /> 
+            <Home ux:Template="Home" router="router" /> 
+            <AddSession ux:Template="AddSession" router="router" /> 
+        </Navigator>
+
+        <BottomFrameBackground IncludesKeyboard="true"  Dock="Bottom" />
+
+    </DockPanel>
+    
+
+</App>
