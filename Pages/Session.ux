@@ -1,0 +1,35 @@
+<Page ux:Class="Session">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		function AddPhoto() {
+			router.push("CameraViewPage");
+		}
+		function goToSession() {
+			// router.push("Session");
+		}
+		module.exports={
+			AddPhoto,
+			goToSession
+		}
+	</JavaScript>
+	<DockPanel>
+		<Grid Dock="Top" Background="#252e3e" MinHeight="50" Columns="1*,5*,1*">
+			<Components.HumbMenu  />
+			<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff">Session: Session Name</myText>
+ 			<!-- <Panel></Panel> -->
+		</Grid>
+		<ScrollView Dock="Fill">
+			<StackPanel Padding="0,0,0,0">
+				<Components.ItemMenu Clicked="{goToSession}" Text="The Answer" Background="#eee8" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 1" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 2" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 3" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 4" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 5" />
+				<Components.ItemMenu Clicked="{goToSession}" Text="Answer 6" />
+			</StackPanel>
+		</ScrollView>
+		<Components.FloatButton Value="+" Clicked="{AddPhoto}" />
+	</DockPanel>
+
+</Page>

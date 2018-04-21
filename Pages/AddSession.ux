@@ -26,9 +26,9 @@
 	<DockPanel>
 		<Grid Dock="Top" Background="#252e3e" MinHeight="50" Columns="1*,5*,1.5*">
 			<Components.HumbMenu  />
-			<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Add Session" />
+			<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="ADD SESSION" />
 			<Panel Clicked="{addSession}"  HitTestMode="LocalBoundsAndChildren">
-				<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Done" />
+				<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Done" />
 			</Panel>
  		</Grid>
 		<ScrollView Dock="Fill">
@@ -38,7 +38,7 @@
 			</StackPanel>
 		</ScrollView>
 		<Rectangle Clicked="{StartSession}" HitTestMode="LocalBoundsAndChildren" CornerRadius="50" Fill="#252e3e" Dock="Bottom" MinHeight="15" Padding="10" Width="90%" Margin="15,15,15,25">
-			<myText TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Start Session" />
+			<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Start Session" />
 			<Shadow Distance="8" Size="10" Angle="90" Color="#0004" />
 			<WhilePressed>
 				<Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />

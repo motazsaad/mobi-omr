@@ -4,9 +4,9 @@
 		var Observable = require("FuseJS/Observable");
 		var copyrights = Observable("OMR Team © 2018");
 		var Timer = require("FuseJS/Timer");	
-		// Timer.create(function(){
-		// 	router.goto("Home");
-		// },5000, false);
+		Timer.create(function(){
+			router.goto("Home");
+		},5000, false);
 		module.exports ={
 			copyrights
 		}

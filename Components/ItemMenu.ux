@@ -1,7 +1,9 @@
-<StackPanel ux:Class="Components.ItemMenu" HitTestMode="LocalBoundsAndChildren"  ItemSpacing="10" Padding="10,5">
+<StackPanel ux:Class="Components.ItemMenu" HitTestMode="LocalBoundsAndChildren"  ItemSpacing="10" Padding="10,5" Text="Session Name">
+	<string ux:Property="Text" />
+
 	<Grid Columns="8*,1*" Padding="0,5">
-		<myText>Session Name</myText>
-		<Text Alignment="Center">></Text>
+		<myText Value="{ReadProperty Text}" />
+ 		<Image Height="15px" File="../Assets/Icons/SelecteIcon.png"/>
 	</Grid>
 	<Rectangle Height="1" Fill="#ccc" Width="95%" Alignment="Bottom" Margin="0,0,0,-5" />
 	<WhilePressed>

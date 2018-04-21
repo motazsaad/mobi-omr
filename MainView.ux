@@ -5,9 +5,9 @@
     </WhileActive>
    	
 
-<!--     <Font File="assets/Fonts/TheSans-Plain.otf" ux:Global="MyDefaultFont" />
-    <Font File="assets/Fonts/TheSans-Bold.otf" ux:Global="bold" /> -->
-	<Text  ux:Class="myText">
+    <Font File="assets/Fonts/TheSans-Plain.otf" ux:Global="TheSans" />
+    <Font File="assets/Fonts/TheSans-Bold.otf" ux:Global="TheSansBold" />
+	<Text  ux:Class="myText" Font="TheSans">
 		 <Scaling RelativeTo="SizeFactor"  RelativeNode="this"/>
 	</Text>
 	
@@ -22,7 +22,9 @@
         <Navigator Dock="Fill" DefaultPath="Splash">
             <Splash ux:Template="Splash" router="router" /> 
             <Home ux:Template="Home" router="router" /> 
+            <Session ux:Template="Session" router="router" /> 
             <AddSession ux:Template="AddSession" router="router" /> 
+            <CameraViewPage ux:Template="CameraViewPage" router="router" /> 
         </Navigator>
 
         <BottomFrameBackground IncludesKeyboard="true"  Dock="Bottom" />
