@@ -53,13 +53,23 @@
     			            console.log("Failed to capture photo: " + error);
     			        });
     			}    
+                function goBack() {
+                    router.goBack();
+                }
     			module.exports={
-    				capturePhoto
+    				capturePhoto,
+                    goBack
     			}
             </JavaScript>
         </NativeViewHost>
-            <Panel Dock="Bottom" Padding="0,10" Clicked="{capturePhoto}" HitTestMode="LocalBoundsAndChildren">
-            	<Text Alignment="Center" TextAlignment="Center"  >Camera</Text>
+        <Grid ColumnCount="2" Dock="Bottom" >
+            <Panel Padding="0,10" Clicked="{capturePhoto}" HitTestMode="LocalBoundsAndChildren" >
+                <Text  Alignment="Center" TextAlignment="Center">Camera</Text>
             </Panel>
+            <Panel Padding="0,10"  Clicked="{goBack}" Background="#eee" HitTestMode="LocalBoundsAndChildren">
+                <Text  Alignment="Center" TextAlignment="Center">Cancel</Text>
+            </Panel>
+           
+        </Grid>
     </DockPanel>
 </Page>
