@@ -4,7 +4,7 @@
     "Fuse",
     "FuseJS",
     "Fuse.Controls.CameraView",
-    "Fuse.ImageTools"   
+    "Fuse.ImageTools"
   ],
   "Includes": [
     "*"

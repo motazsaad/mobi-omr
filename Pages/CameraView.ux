@@ -1,75 +1,81 @@
 <Page ux:Class="CameraViewPage">
 	<Router ux:Dependency="router" />
- 	<DockPanel>
-        <NativeViewHost Dock="Fill" >
-            <!-- The size and aspect of the camera live preview
-                 does not always match they size your cameraview
-                 is given by layout. Set stretchmode to either Uniform
-                 or Fill to deal with this
-             -->
+    <JavaScript>
+        var Observable = require("FuseJS/Observable");
+        var Camera = _cameraView;
 
-            <CameraView ux:Name="_cameraView" />
-            <JavaScript>
-                var Observable = require("FuseJS/Observable");
-                var Camera = _cameraView;
+        // Observables for dealing with
+        // the different states of the camera
+        var captureMode = Observable();
+        var cameraFacing = Observable();
+        var flashMode = Observable();
+        var cameraReady = Observable(false);
 
-                // Observables for dealing with
-                // the different states of the camera
-                var captureMode = Observable();
-                var cameraFacing = Observable();
-                var flashMode = Observable();
-                var cameraReady = Observable(false);
+        // getCamereInfo will resolve when the camera is fully loaded
+        Camera.getCameraInfo()
+            .then(function(info) {
+                captureMode.value = info[Camera.INFO_CAPTURE_MOE];
+                cameraFacing.value = info[Camera.INFO_CAMERA_FACING];
+                flashMode.value = info[Camera.INFO_FLASH_MODE];
+                cameraReady.value = true;
+            })
+            .catch(function(error) {
+                console.log("Failed to get camera info: " + error);
+            });
 
-                // getCamereInfo will resolve when the camera is fully loaded
-                Camera.getCameraInfo()
-                    .then(function(info) {
-                        captureMode.value = info[Camera.INFO_CAPTURE_MOE];
-                        cameraFacing.value = info[Camera.INFO_CAMERA_FACING];
-                        flashMode.value = info[Camera.INFO_FLASH_MODE];
-                        cameraReady.value = true;
+        Camera.setCaptureMode(Camera.CAPTURE_MODE_PHOTO)
+            .then(function(newCaptureMode) { /* ready to capture photo */ })
+            .catch(function(error) { /* failed */ });
+
+        function capturePhoto() {
+        Camera.setFlashMode(Camera.FLASH_MODE_OFF)
+            .then(function(newFlashMode) { 
+                // console.log("Get Photo");
+                Camera.capturePhoto()
+                    .then(function(photo) {
+                        photo.save()
+                            .then(function(filePath) {
+                                // console.log("Photo saved to: " + filePath);
+                                photo.release();
+                                router.push("PhotoView", {imagePath: filePath });
+                            })
+                            .catch(function(error) {
+                                console.log("Failed to save photo: " + error);
+                                photo.release();
+                            });
                     })
                     .catch(function(error) {
-                        console.log("Failed to get camera info: " + error);
+                        console.log("Failed to capture photo: " + error);
                     });
+            })
+            .catch(function(error) { 
+                console.log("Failed to set flash mode off: " + error);
+            });
+        }    
+        function goBack() {
+            console.log("Go Back");
+            router.goBack();
+        }
+        module.exports={
+            capturePhoto,
+            goBack
+        }
+    </JavaScript>
+            
+ 	<DockPanel>
 
-                Camera.setCaptureMode(Camera.CAPTURE_MODE_PHOTO)
-    			    .then(function(newCaptureMode) { /* ready to capture photo */ })
-    			    .catch(function(error) { /* failed */ });
-
-    			function capturePhoto() {
-    			    Camera.capturePhoto()
-    			        .then(function(photo) {
-    			            photo.save()
-    			                .then(function(filePath) {
-    			                    console.log("Photo saved to: " + filePath);
-    			                    photo.release();
-    			                })
-    			                .catch(function(error) {
-    			                    console.log("Failed to save photo: " + error);
-    			                    photo.release();
-    			                });
-    			        })
-    			        .catch(function(error) {
-    			            console.log("Failed to capture photo: " + error);
-    			        });
-    			}    
-                function goBack() {
-                    router.goBack();
-                }
-    			module.exports={
-    				capturePhoto,
-                    goBack
-    			}
-            </JavaScript>
+        <NativeViewHost ux:Name="camera" Dock="Fill"  >
+            <CameraView PreviewStretchMode="UniformToFill" ux:Name="_cameraView" />
         </NativeViewHost>
-        <Grid ColumnCount="2" Dock="Bottom" >
-            <Panel Padding="0,10" Clicked="{capturePhoto}" HitTestMode="LocalBoundsAndChildren" >
-                <Text  Alignment="Center" TextAlignment="Center">Camera</Text>
-            </Panel>
-            <Panel Padding="0,10"  Clicked="{goBack}" Background="#eee" HitTestMode="LocalBoundsAndChildren">
-                <Text  Alignment="Center" TextAlignment="Center">Cancel</Text>
-            </Panel>
-           
-        </Grid>
+        <Panel Dock="Bottom" Background="#efefef" Padding="0" MinHeight="60">
+            <Grid ColumnCount="2">
+                <Panel Background="#252e3e" Padding="0,10" Clicked="{capturePhoto}" HitTestMode="LocalBoundsAndChildren" >
+                    <myText  Alignment="Center" TextColor="#eee" TextAlignment="Center">Capture</myText>
+                </Panel>
+                <Panel Padding="0,10"  Clicked="{goBack}" Background="#eee" HitTestMode="LocalBoundsAndChildren">
+                    <myText  Alignment="Center"  TextColor="#252e3e" TextAlignment="Center">Cancel</myText>
+                </Panel>
+            </Grid>
+        </Panel>
     </DockPanel>
 </Page>

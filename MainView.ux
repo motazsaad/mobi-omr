@@ -17,14 +17,16 @@
     	<Panel Dock="Top">
 	        <StatusBarBackground/>
 	        <TopFrameBackground/>
+            <iOS.StatusBarConfig ux:Name="statusBarConfig" Style="Dark" IsVisible="false" Animation="Slide" />
     	</Panel>
 
-        <Navigator Dock="Fill" DefaultPath="Splash">
+        <Navigator Dock="Fill" DefaultPath="AddSession" CachingMode="Optimized" SwipeBack="Left"> 
             <Splash ux:Template="Splash" router="router" /> 
             <Home ux:Template="Home" router="router" /> 
-            <Session ux:Template="Session" router="router" /> 
-            <AddSession ux:Template="AddSession" router="router" /> 
+            <Session ux:Template="Session" router="router" SwipeBack="Left" /> 
+            <AddSession ux:Template="AddSession" router="router" SwipeBack="Left" /> 
             <CameraViewPage ux:Template="CameraViewPage" router="router" /> 
+            <PhotoView ux:Template="PhotoView" router="router" SwipeBack="Left" /> 
         </Navigator>
 
         <BottomFrameBackground IncludesKeyboard="true"  Dock="Bottom" />

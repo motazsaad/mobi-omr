@@ -1,0 +1,35 @@
+<Page ux:Class="PhotoView" SwipeBack="Left">
+	<Router ux:Dependency="router" />
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var imagePath = Observable("");
+		this.onParameterChanged(function (params) {
+			// console.log("PhotoView: " + JSON.stringify(params));
+			if(params != null && params.imagePath != null ){
+				imagePath.value = params.imagePath;
+			}
+		});
+		function goToSession() {
+			// router.push("Session");
+		}
+		module.exports={
+			imagePath,
+			goBack: ()=> {router.goBack();},
+			goToSession
+		}
+	</JavaScript>
+	<DockPanel>
+		<Grid Dock="Top" Background="#252e3e" MinHeight="50" Columns="1*,5*,1*">
+			<Components.HumbMenu  />
+			<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff">Photo View</myText>
+ 			<!-- <Panel></Panel> -->
+		</Grid>
+		<ScrollView Dock="Fill">
+			<StackPanel Padding="0,10,0,0">
+				 <Image File="{imagePath}" Width="90%" Padding="15" />
+				<Components.PrimeryButton Clicked="{goBack}" Text="Back"/>
+			</StackPanel>
+		</ScrollView>
+ 	</DockPanel>
+
+</Page>

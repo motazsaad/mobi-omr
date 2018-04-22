@@ -37,13 +37,8 @@
 				<Components.TextBox Lable="Exam Grade:" Value="{grade}" InputHint="Integer"/>
 			</StackPanel>
 		</ScrollView>
-		<Rectangle Clicked="{StartSession}" HitTestMode="LocalBoundsAndChildren" CornerRadius="50" Fill="#252e3e" Dock="Bottom" MinHeight="15" Padding="10" Width="90%" Margin="15,15,15,25">
-			<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="#fff" Value="Start Session" />
-			<Shadow Distance="8" Size="10" Angle="90" Color="#0004" />
-			<WhilePressed>
-				<Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
-			</WhilePressed>
-		</Rectangle>
+		<Components.PrimeryButton Clicked="{StartSession}" Dock="Bottom"/>
+		 
  	</DockPanel>
 	
 </Page>

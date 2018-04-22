@@ -1,0 +1,10 @@
+<Rectangle ux:Class="Components.PrimeryButton" TextColor="#fff" Text="Submit" HitTestMode="LocalBoundsAndChildren" CornerRadius="50" Fill="#252e3e"  MinHeight="15" Padding="10" Width="90%" Margin="15,15,15,25">
+	<string ux:Property="Text" />
+	<string ux:Property="TextColor" />
+
+	<myText Font="TheSansBold" TextAlignment="Center" Alignment="Center" TextColor="{ReadProperty TextColor}" Value="{ReadProperty Text}" />
+	<Shadow Distance="8" Size="10" Angle="90" Color="#0004" />
+	<WhilePressed>
+		<Scale Factor=".95" Duration=".08" Easing="QuadraticOut" />
+	</WhilePressed>
+</Rectangle>
