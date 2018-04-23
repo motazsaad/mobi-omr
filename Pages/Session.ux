@@ -1,23 +1,5 @@
-<Page ux:Class="Session" ux:Name="self" SwipeBack="Left" >
+<Page ux:Class="Session" HitTestMode="LocalBoundsAndChildren" >
 	<Router ux:Dependency="router" />
-<!-- 	<WhileSwiping Source="this">
-		<JavaScript>
-			console.log("Swipe");
-		</JavaScript>
-	</WhileSwiping> -->
-	<SwipeGesture ux:Name="swipe" Direction="Right" Type="Auto" Edge="Right" Length="200" />
-	<SwipingAnimation Source="swipe">
-		<Scale Target="self" Factor=".8" Duration="0.4" DurationBack="0.2" />
-		<Move X="200" />
-	</SwipingAnimation>
-	<Swiped Source="swipe">
-		<Scale Factor="1.5" Duration="0.4" DurationBack="0.2" />
-		<DebugAction Message="Swiped!" />
-	</Swiped>
-	<!-- <Swipe Type="Active" Directon="Left" LengthNode="ActionPanel" ux:Name="ActionSwipe"/>
-	<SwipingAnimation Source="ActionSwipe">
-		<Move X="-1" RelativeTo="ActionPanel"/>
-	</SwipingAnimation> -->
 	<JavaScript>
 		function AddPhoto() {
 			router.push("CameraViewPage");

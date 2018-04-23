@@ -2,7 +2,7 @@
 	<Router ux:Dependency="router" />
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
-		var imagePath = Observable("");
+		var imagePath = Observable("Assets/Images/sample.png");
 		this.onParameterChanged(function (params) {
 			// console.log("PhotoView: " + JSON.stringify(params));
 			if(params != null && params.imagePath != null ){
@@ -12,7 +12,7 @@
 		function goToSession() {
 			// router.push("Session");
 		}
-		module.exports={
+ 		module.exports={
 			imagePath,
 			goBack: ()=> {router.goBack();},
 			goToSession
@@ -25,8 +25,8 @@
  			<!-- <Panel></Panel> -->
 		</Grid>
 		<ScrollView Dock="Fill">
-			<StackPanel Padding="0,10,0,0">
-				 <Image File="{imagePath}" Width="90%" Padding="15" />
+			<StackPanel Padding="0,10,0,0" ItemSpacing="15">
+				<Image File="{imagePath}" Width="90%" Padding="15" />
 				<Components.PrimeryButton Clicked="{goBack}" Text="Back"/>
 			</StackPanel>
 		</ScrollView>
